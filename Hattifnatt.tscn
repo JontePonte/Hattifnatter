@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hattifnatt.gd" type="Script" id=1]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="CapsuleShape" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.176471, 0.168627, 0.431373, 1 )
+roughness = 0.0
+emission_enabled = true
+emission = Color( 0.133333, 0.137255, 0.211765, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+
+[node name="Hattifnatt" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="BodyLow" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="BodyHigh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.9, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.94157e-008, -1.1305, 0, 1, -4.37114e-008, 0, 1.7, 0 )
+shape = SubResource( 3 )
+
+[node name="Eye_R" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.3, 2.6, -0.9 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Eye_L" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.3, 2.6, -0.9 )
+mesh = SubResource( 5 )
+material/0 = null

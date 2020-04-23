@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://NumberDisp.gd" type="Script" id=1]
+
+[node name="NumberDisp" type="RichTextLabel"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 157.0
+margin_bottom = 140.0
+script = ExtResource( 1 )
