@@ -1,7 +1,7 @@
 extends Node
 
 # Total number of hattifnatts and how many of the start as infected
-var hatt_total = 200
+var hatt_total = 20
 var hatt_inf_start = 1
 
 # Variables for hattifnatt movement

@@ -74,12 +74,25 @@ func _physics_process(delta):
 		become_removed()
 
 
+func _on_entered_social_zone(body):
+	if GlobalVars.time > 1 and body is KinematicBody:
+		var x_diff = translation.x - body.translation.x
+		var z_diff = translation.z - body.translation.z
+		var tot_diff = sqrt(pow(2,x_diff) + pow(2,z_diff))
+		
+		acceleration.x = x_diff / tot_diff
+		acceleration.y = z_diff / tot_diff
+		
+		
+
+
 
 func spread_infection():
-		var scene = load("res://Infection.tscn")
-		var scene_instance = scene.instance()
-		scene_instance.set_name("infection")
-		add_child(scene_instance)
+	var scene = load("res://Infection.tscn")
+	var scene_instance = scene.instance()
+	scene_instance.set_name("infection")
+	add_child(scene_instance)
+
 
 func become_infected():
 	if hatt_state == "S":
@@ -92,6 +105,7 @@ func become_infected():
 		
 		GlobalVars.hatt_inf += 1
 		GlobalVars.hatt_sus -= 1
+
 
 func become_susceptible():
 	hatt_state = "S"
@@ -113,3 +127,4 @@ func become_removed():
 		
 		GlobalVars.hatt_rem += 1
 		GlobalVars.hatt_inf -= 1
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hattifnatt.gd" type="Script" id=1]
 
@@ -19,6 +19,8 @@ emission_on_uv2 = false
 
 [sub_resource type="SphereMesh" id=5]
 material = SubResource( 4 )
+
+[sub_resource type="SphereShape" id=6]
 
 [node name="Hattifnatt" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -46,3 +48,10 @@ material/0 = null
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.3, 2.6, -0.9 )
 mesh = SubResource( 5 )
 material/0 = null
+
+[node name="AreaSocDist" type="Area" parent="."]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaSocDist"]
+shape = SubResource( 6 )
+[connection signal="body_entered" from="AreaSocDist" to="." method="_on_entered_social_zone"]
