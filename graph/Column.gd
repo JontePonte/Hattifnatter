@@ -11,9 +11,9 @@ var column_width = GlobalVars.graph_column_width
 var graph_height = GlobalVars.graph_height
 
 # Column colors
-var color_S = GlobalVars.color_hatt_sus
-var color_I = GlobalVars.color_hatt_inf
-var color_R = GlobalVars.color_hatt_rem
+var color_S = GlobalVars.color_graph_sus
+var color_I = GlobalVars.color_graph_inf
+var color_R = GlobalVars.color_graph_rem
 
 # The number of seconds the column has been visable
 var visable_counter = 0
