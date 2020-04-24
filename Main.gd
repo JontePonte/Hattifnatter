@@ -13,7 +13,7 @@ func _ready():
 		var scene = load("res://Hattifnatt.tscn")
 		var scene_instance = scene.instance()
 		scene_instance.set_name(str(i))
-		scene_instance.translate(Vector3(-10,0,0))
+		scene_instance.translate(Vector3((0.5-randf())*GlobalVars.floor_size_x,0,(0.5-randf())*GlobalVars.floor_size_z))
 		add_child(scene_instance)
 		if i < GlobalVars.hatt_inf_start:
 			scene_instance.become_infected()

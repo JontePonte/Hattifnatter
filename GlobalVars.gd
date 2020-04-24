@@ -13,9 +13,13 @@ var hatt_speed = 2
 
 # Variabls for infection
 var inf_prob_spread = 10
-var inf_prob_removed = 4
+var inf_prob_removed = 2
 
 var inf_spread_size = 15
+
+# World variabels
+var floor_size_x = 80
+var floor_size_z = 80
 
 # The different hattifnatt colors and infection color
 var color_hatt_sus  = Color(1,    1,    1)
