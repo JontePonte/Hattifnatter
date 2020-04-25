@@ -9,6 +9,7 @@ var inf = "Infected:       "
 var rem = "Removed:      "
 var inf_max = "Max infected: "
 var inf_total = "Total infected: "
+var social_distance = "Social Distance: "
 
 func _ready():
 	# Load global variables
@@ -23,12 +24,14 @@ func _process(delta):
 	rem = "Removed:      " + str(GlobalVars.hatt_rem)
 	inf_max = "Max infected: " + str(GlobalVars.inf_percent_max) + "%"
 	inf_total = "Total infected: " + str(GlobalVars.inf_percent + GlobalVars.rem_percent) + "%"
+	if GlobalVars.is_social_distance:
+		social_distance = "Social Distance: ON"
+	else:
+		social_distance = "Social Distance: OFF"
 	
 	# Clear the window and print the test
 	clear()
 	push_color(text_color)
-	add_text(timer)
-	newline()
 	add_text(sus)
 	newline()
 	add_text(inf)
@@ -38,3 +41,7 @@ func _process(delta):
 	add_text(inf_max)
 	newline()
 	add_text(inf_total)
+	newline()
+	add_text(social_distance)
+	newline()
+	add_text(timer)

@@ -40,8 +40,9 @@ func _physics_process(delta):
 		acceleration.x = (0.5 - randf())
 		acceleration.z = (0.5 - randf())
 	
-	# Calculate new acceleration if the hattifnatt is close to other
-	social_distance(get_bodies_inside_sozial_area())
+	if GlobalVars.is_social_distance:
+		# Calculate new acceleration if the hattifnatt is close to other
+		social_distance(get_bodies_inside_sozial_area())
 	
 	if is_on_wall():
 		if test_move(transform, Vector3(delta,0,0)):

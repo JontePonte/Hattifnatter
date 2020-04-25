@@ -10,12 +10,13 @@ var hatt_acc = 2
 var hatt_speed_max = 3
 
 # Variabls for infection
-var inf_prob_spread = 10
+var inf_prob_spread = 20
 var inf_prob_removed = 2
 
 var inf_spread_size = 15
 
-var social_distance_strength = 3
+var is_social_distance = false
+var social_distance_strength = 2
 
 # World variabels
 var floor_size_x = 80
@@ -59,6 +60,8 @@ func reset_all():
 	hatt_sus = hatt_total
 	hatt_inf = 0
 	hatt_rem = 0
+	
+	is_social_distance = false
 	
 	# Clock variable (count up ~ every second)
 	time = 0

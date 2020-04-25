@@ -45,3 +45,8 @@ func _physics_process(delta):
 		# Update max infected percent if infected percent is higher
 		if GlobalVars.inf_percent >= GlobalVars.inf_percent_max:
 			GlobalVars.inf_percent_max = GlobalVars.inf_percent
+		
+		# Start social distance if more than 10 % infected
+		if GlobalVars.inf_percent > 10 and not GlobalVars.is_social_distance:
+			GlobalVars.is_social_distance = true
+			
