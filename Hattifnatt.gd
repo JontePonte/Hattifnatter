@@ -5,6 +5,7 @@ var speed = GlobalVars.hatt_speed
 var movement = Vector3()
 var velocity = Vector3(0, 0, 0)
 var acceleration = Vector3(0, 0, 0)
+var velocity_max = GlobalVars.hatt_speed_max
 
 var forward_pos = Vector3()
 
@@ -39,6 +40,7 @@ func _physics_process(delta):
 		acceleration.x = (0.5 - randf())
 		acceleration.z = (0.5 - randf())
 	
+	social_distance(get_bodies_inside_sozial_area())
 	
 	if is_on_wall():
 		if test_move(transform, Vector3(delta,0,0)):
@@ -57,7 +59,10 @@ func _physics_process(delta):
 	# Calculate new velocity for the hattifnatt
 	velocity.x += acceleration.x * speed * delta
 	velocity.z += acceleration.z * speed * delta
-	
+	if pow((velocity.x + velocity.z),2) > pow(velocity_max,2):
+		velocity.x *= 0.9
+		velocity.z *= 0.9
+
 	# Move command for the hattifnatt
 	movement = move_and_slide(velocity, Vector3(0, 1, 0))
 	
@@ -74,17 +79,23 @@ func _physics_process(delta):
 		become_removed()
 
 
-func _on_entered_social_zone(body):
-	if GlobalVars.time > 1 and body is KinematicBody:
-		var x_diff = translation.x - body.translation.x
-		var z_diff = translation.z - body.translation.z
-		var tot_diff = sqrt(pow(2,x_diff) + pow(2,z_diff))
-		
-		acceleration.x = x_diff / tot_diff
-		acceleration.y = z_diff / tot_diff
-		
-		
+func get_bodies_inside_sozial_area():
+	var bodies = $SocialArea.get_overlapping_bodies()
+	var output = []
+	for body in bodies:
+		if body is KinematicBody and not body == self:
+			output.append(body)
+	return output
 
+
+func social_distance(bodies):
+	if bodies:
+		acceleration.x = 0
+		acceleration.z = 0
+		for body in bodies:
+			var direction = (body.get_translation() - get_translation()).normalized()
+			acceleration.x -= direction.x * GlobalVars.social_distance_strength
+			acceleration.z -= direction.z * GlobalVars.social_distance_strength
 
 
 func spread_infection():

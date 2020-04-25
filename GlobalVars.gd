@@ -1,18 +1,21 @@
 extends Node
 
 # Total number of hattifnatts and how many of the start as infected
-var hatt_total = 20
-var hatt_inf_start = 1
+var hatt_total = 100
+var hatt_inf_start = 2
 
 # Variables for hattifnatt movement
 var hatt_prob_acc_change_percent = 50
 var hatt_speed = 2
+var hatt_speed_max = 3
 
 # Variabls for infection
 var inf_prob_spread = 10
 var inf_prob_removed = 2
 
 var inf_spread_size = 15
+
+var social_distance_strength = 3
 
 # World variabels
 var floor_size_x = 80
