@@ -1,11 +1,11 @@
 extends KinematicBody
 
 # Variables for movement
-var speed = GlobalVars.hatt_speed
+var velocity_max = GlobalVars.hatt_speed_max
+var acc_multiply = GlobalVars.hatt_acc
 var movement = Vector3()
 var velocity = Vector3(0, 0, 0)
 var acceleration = Vector3(0, 0, 0)
-var velocity_max = GlobalVars.hatt_speed_max
 
 var forward_pos = Vector3()
 
@@ -40,6 +40,7 @@ func _physics_process(delta):
 		acceleration.x = (0.5 - randf())
 		acceleration.z = (0.5 - randf())
 	
+	# Calculate new acceleration if the hattifnatt is close to other
 	social_distance(get_bodies_inside_sozial_area())
 	
 	if is_on_wall():
@@ -57,8 +58,9 @@ func _physics_process(delta):
 			velocity.z *= 0.8
 	
 	# Calculate new velocity for the hattifnatt
-	velocity.x += acceleration.x * speed * delta
-	velocity.z += acceleration.z * speed * delta
+	velocity.x += acceleration.x * acc_multiply * delta
+	velocity.z += acceleration.z * acc_multiply * delta
+	# Dampen speed if it's bigger than velocity_max
 	if pow((velocity.x + velocity.z),2) > pow(velocity_max,2):
 		velocity.x *= 0.9
 		velocity.z *= 0.9
@@ -80,6 +82,7 @@ func _physics_process(delta):
 
 
 func get_bodies_inside_sozial_area():
+	# Return a list of KinematicBodies inside social area
 	var bodies = $SocialArea.get_overlapping_bodies()
 	var output = []
 	for body in bodies:
@@ -89,6 +92,7 @@ func get_bodies_inside_sozial_area():
 
 
 func social_distance(bodies):
+	# Take a list of bodies and direct the hattifnatt in opposit direction
 	if bodies:
 		acceleration.x = 0
 		acceleration.z = 0

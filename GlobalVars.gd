@@ -6,7 +6,7 @@ var hatt_inf_start = 2
 
 # Variables for hattifnatt movement
 var hatt_prob_acc_change_percent = 50
-var hatt_speed = 2
+var hatt_acc = 2
 var hatt_speed_max = 3
 
 # Variabls for infection
