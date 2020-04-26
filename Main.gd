@@ -23,12 +23,12 @@ func _ready():
 
 func _process(delta):
 	# Reset world by pressing ENTER
-	if Input.is_key_pressed(KEY_ENTER):
+	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()	# Reset all scenes
 		GlobalVars.reset_all()				# Reset global variables
 	
 	# Toggle Social Distance policy with SPACE
-	if Input.is_key_pressed(KEY_SPACE):
+	if Input.is_action_just_pressed("ui_select"):
 		if GlobalVars.is_social_distance:
 			GlobalVars.is_social_distance = false
 		else:
