@@ -35,5 +35,5 @@ func _process(delta):
 
 
 func _on_Infection_body_entered(body):
-	if body.has_method("become_infected"):
+	if body.has_method("become_infected") and not body == get_parent():
 		body.become_infected()

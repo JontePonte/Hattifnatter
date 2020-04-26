@@ -26,6 +26,13 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_ENTER):
 		get_tree().reload_current_scene()	# Reset all scenes
 		GlobalVars.reset_all()				# Reset global variables
+	
+	# Toggle Social Distance policy with SPACE
+	if Input.is_key_pressed(KEY_SPACE):
+		if GlobalVars.is_social_distance:
+			GlobalVars.is_social_distance = false
+		else:
+			GlobalVars.is_social_distance = true 
 
 
 func _physics_process(delta):
@@ -45,8 +52,3 @@ func _physics_process(delta):
 		# Update max infected percent if infected percent is higher
 		if GlobalVars.inf_percent >= GlobalVars.inf_percent_max:
 			GlobalVars.inf_percent_max = GlobalVars.inf_percent
-		
-		# Start social distance if more than 10 % infected
-		if GlobalVars.inf_percent > 10 and not GlobalVars.is_social_distance:
-			GlobalVars.is_social_distance = true
-			
