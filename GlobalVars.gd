@@ -16,7 +16,7 @@ var inf_prob_removed = 2
 var inf_spread_size = 15
 
 var is_social_distance = false
-var social_distance_strength = 2
+var social_distance_strength = 1
 
 # World variabels
 var floor_size_x = 80
@@ -60,6 +60,12 @@ func reset_all():
 	hatt_sus = hatt_total
 	hatt_inf = 0
 	hatt_rem = 0
+	
+	# Vars for population information
+	inf_percent = 0
+	sus_percent = 0
+	rem_percent = 0
+	inf_percent_max = 0
 	
 	is_social_distance = false
 	
