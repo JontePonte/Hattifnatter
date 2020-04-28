@@ -16,7 +16,7 @@ var inf_prob_removed = 2
 var inf_spread_size = 15
 
 var is_social_distance = false
-var social_distance_strength = 1
+var social_distance_strength = 3
 
 # World variabels
 var floor_size_x = 80
@@ -39,6 +39,7 @@ var graph_marg_y = 10
 var color_graph_sus = Color(0.1,  0.1,  0.1, 0.6)
 var color_graph_inf = Color(0.8,  0.3,  0.3, 0.6)
 var color_graph_rem = Color(0.3,  0.3,  0.8, 0.6)
+var color_graph_sd =  Color(0,    0,    1,   0.6)
 
 # Variables for the different hattifnatt states
 var hatt_sus = hatt_total
